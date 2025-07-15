@@ -9,7 +9,7 @@
     "pins": "*"
   },
   "files": [
-    "command.ts"
+    "main.ts"
   ],
   "testFiles": [
   ],
