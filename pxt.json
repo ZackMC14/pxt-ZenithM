@@ -9,7 +9,8 @@
     "pins": "*"
   },
   "files": [
-    "main.ts"
+    "main.ts",
+    "README.md"
   ],
   "testFiles": [
   ],
