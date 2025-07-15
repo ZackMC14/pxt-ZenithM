@@ -1,5 +1,5 @@
 //% color="#AA278D" weight=100 icon="\uf1b9"
-//% block="ZenithMotor"
+//% block="ZenithM"
 namespace ZenithM {
 
     export enum Motor {
