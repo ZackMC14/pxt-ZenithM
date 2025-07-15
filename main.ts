@@ -1,5 +1,5 @@
 //% color="#AA278D" weight=100 icon="\uf1b9"
-//% block="ZenithMotor"
+//% block="ZenithM"
 namespace ZenithM {
 
     export enum Motor {
@@ -22,7 +22,7 @@ namespace ZenithM {
         [DigitalPin.P2, AnalogPin.P12]
     ]
 
-    //% blockId="zenithMotor_runMotor"
+    //% blockId="zenithM_runMotor"
     //% block="motor %motor direction %dir speed %speed"
     //% speed.min=0 speed.max=255
     export function runMotor(motor: Motor, dir: Direction, speed: number): void {
@@ -40,7 +40,7 @@ namespace ZenithM {
         }
     }
 
-    //% blockId="zenithMotor_stopAll"
+    //% blockId="zenithM_stopAll"
     //% block="stop all motors"
     export function stopAll(): void {
         for (let [dirPin, pwmPin] of motorPins) {
