@@ -1,18 +1,14 @@
 {
-  "name": "ZenithM",
+  "name": "zenithmotor",
   "version": "0.0.1",
-  "description": "Control 4 motors with direction and speed pins",
+  "description": "Control 4 motors with direction and speed",
   "license": "MIT",
   "dependencies": {
     "core": "*",
-    "control": "*",
     "pins": "*"
   },
   "files": [
     "main.ts"
   ],
-  "testFiles": [
-  ],
-  "public": true,
   "preferredEditor": "ts"
 }
