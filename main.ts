@@ -1,15 +1,9 @@
 //% color="#AA278D" weight=100 icon="\uf1b9"
 //% block="ZenithMotor"
-namespace ZenithMotor {
+namespace ZenithM {
+
     export enum Motor {
-        //% block="M1"
-        M1 = 0,
-        //% block="M2"
-        M2 = 1,
-        //% block="M3"
-        M3 = 2,
-        //% block="M4"
-        M4 = 3
+        M1 = 0, M2 = 1, M3 = 2, M4 = 3
     }
 
     export enum Direction {
@@ -26,28 +20,30 @@ namespace ZenithMotor {
         [DigitalPin.P15, AnalogPin.P16],
         [DigitalPin.P1, AnalogPin.P8],
         [DigitalPin.P2, AnalogPin.P12]
-    ];
+    ]
 
-    //% blockId="zenithMotor_run"
-    //% block="run motor %motor direction %dir speed %speed"
+    //% blockId="zenithMotor_runMotor"
+    //% block="motor %motor direction %dir speed %speed"
     //% speed.min=0 speed.max=255
-    //% weight=90
-    export function run(motor: Motor, dir: Direction, speed: number): void {
-        const [dirPin, pwmPin] = motorPins[motor];
+    export function runMotor(motor: Motor, dir: Direction, speed: number): void {
+        let [dirPin, pwmPin] = motorPins[motor];
+
         if (dir == Direction.Stop || speed == 0) {
             pins.digitalWritePin(dirPin, 0);
             pins.analogWritePin(pwmPin, 0);
-        } else {
-            pins.digitalWritePin(dirPin, dir == Direction.Forward ? 1 : 0);
+        } else if (dir == Direction.Forward) {
+            pins.digitalWritePin(dirPin, 1);
+            pins.analogWritePin(pwmPin, speed);
+        } else if (dir == Direction.Reverse) {
+            pins.digitalWritePin(dirPin, 0);
             pins.analogWritePin(pwmPin, speed);
         }
     }
 
     //% blockId="zenithMotor_stopAll"
     //% block="stop all motors"
-    //% weight=80
     export function stopAll(): void {
-        for (const [dirPin, pwmPin] of motorPins) {
+        for (let [dirPin, pwmPin] of motorPins) {
             pins.digitalWritePin(dirPin, 0);
             pins.analogWritePin(pwmPin, 0);
         }
